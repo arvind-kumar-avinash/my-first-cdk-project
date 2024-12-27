@@ -2,6 +2,7 @@ from aws_cdk import (
     # Duration,
     Stack,
     # aws_sqs as sqs,
+    aws_s3 as _s3,
 )
 from constructs import Construct
 
@@ -17,3 +18,10 @@ class MyFirstCdkProjectStack(Stack):
         #     self, "MyFirstCdkProjectQueue",
         #     visibility_timeout=Duration.seconds(300),
         # )
+        _s3.Bucket(
+            self, 
+            "myBucketId",
+            bucket_name="my-first-cdk-project-bucket-27122024",
+            versioned=True,
+            encryption=_s3.BucketEncryption.KMS_MANAGED
+        )
